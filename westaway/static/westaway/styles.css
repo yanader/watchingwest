@@ -1,0 +1,20 @@
+/* p {
+    color: rgb(19, 0, 128);
+} */
+
+/* .bannerimage {
+    width: 50%;
+    clip-path: circle(200px);
+  } */
+  
+div {
+    border: solid 2px black;
+    margin: 10px;
+    padding: 10px;
+}
+
+.entry-link, .entry-link:hover {
+    text-decoration: none;
+    color: black;
+}
+

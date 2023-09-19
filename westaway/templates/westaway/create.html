@@ -1,0 +1,13 @@
+{% extends 'westaway/layout.html' %}
+
+{% block body %}
+
+This is where the form will live that I will use to create entries.
+
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit"> Create Entry </button>
+</form>
+
+{% endblock %}

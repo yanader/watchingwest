@@ -1,0 +1,18 @@
+{% extends 'westaway/layout.html' %}
+
+{% block body %}
+
+
+{% for entry in entries %}
+<a class="entry-link" href="{% url 'westaway:entry' entry.id %}">
+<div>
+    <p><ul>
+        <li>{{entry.opponent}}</li>
+        <li>{{entry.competition.competition}}</li>
+        <li>{{entry.date}}</li>
+    </ul></p>
+</div>
+</a>
+{% endfor %}
+
+{% endblock %}
