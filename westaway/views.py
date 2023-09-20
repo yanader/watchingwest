@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponse
+from django.db.models import Count
 import csv
 from .models import Opponent, Entry, Image, PasswordEntry
 from .forms import EntryUploadForm
@@ -43,4 +44,13 @@ def entry(request, id):
     entry = Entry.objects.get(id=id)
     return render(request, "westaway/entry.html", {
         "entry": entry
+    })
+
+def mostvisited(request):
+    
+    league = Opponent.objects.annotate(entry_count=Count('entry')).filter(entry_count__gt=0).order_by('-entry_count')
+    for team in league:
+        print(team.name + ' ' + str(team.entry_count))
+    return render(request, "westaway/mostvisited.html", {
+        "league":league
     })

@@ -1,0 +1,14 @@
+{% extends 'westaway/layout.html' %}
+
+{% block body %}
+
+<p>This is the league table of my most seen teams at west away games.</p>
+<p>It includes games at neutral grounds.</p>
+
+<ol>
+    {% for team in league %}
+    <li>{{team.name}} -> {{team.entry_count}} visit{% if team.entry_count != 1 %}s{% endif %}</li>
+    {% endfor %}
+</ol>
+
+{% endblock %}
