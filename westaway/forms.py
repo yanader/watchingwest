@@ -7,13 +7,15 @@ class EntryUploadForm(forms.ModelForm):
 
     class Meta:
         model = Entry
-        fields = ['opponent', 'date', 'location', 'text_entry', 'competition']
+        fields = ['date', 'opponent',  'home', 'location', 'title', 'text_entry', 'competition']
     
     title = forms.CharField(max_length=64)
     photo = forms.ImageField()
 
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     text_entry = forms.CharField(widget=forms.Textarea)
+
+    home = forms.BooleanField(initial=True)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -34,7 +36,8 @@ class EntryUploadForm(forms.ModelForm):
             location=self.cleaned_data['location'],
             text_entry=self.cleaned_data['text_entry'],
             competition=self.cleaned_data['competition'],
-            image=image
+            image=image,
+            home=self.cleaned_data['home']
         )
 
         if commit:

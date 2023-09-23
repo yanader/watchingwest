@@ -47,7 +47,7 @@ class Entry(models.Model):
     opponent = models.ForeignKey(Opponent, on_delete=models.SET_NULL, null=True)
     date = models.DateField()
     location = models.CharField(max_length=64)
-    home = models.BooleanField()
+    home = models.BooleanField(default=True)
     text_entry = models.CharField(max_length=400)
     image = models.OneToOneField(Image, null=True, blank=True, on_delete=models.SET_NULL)
     competition = models.ForeignKey(Competition, on_delete=models.SET_NULL, null=True)
