@@ -1,7 +1,6 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect
 from django.db.models import Count
-import csv
-from .models import Opponent, Entry, Image, PasswordEntry
+from .models import Opponent, Entry, PasswordEntry
 from .forms import EntryUploadForm
 
 # Create your views here.
@@ -12,15 +11,6 @@ def index(request):
         'entries' : entries
     }
     return render(request,"westaway/index.html", context)
-
-
-def crop(request):
-    entry = Entry.objects.first()
-    img = entry.image.photo
-
-    return render(request, "westaway/crop.html", {
-        "img":img
-    })
 
 
 def create(request):
@@ -36,18 +26,14 @@ def create(request):
     return render(request, "westaway/create.html", {'form':form})
 
 
-def image(request, filename):
-    entry = Entry.objects.first()
-    return entry.photo
-
 def entry(request, id):
     entry = Entry.objects.get(id=id)
     return render(request, "westaway/entry.html", {
         "entry": entry
     })
 
+
 def mostvisited(request):
-    
     league = Opponent.objects.annotate(entry_count=Count('entry')).filter(entry_count__gt=0).order_by('-entry_count')
     for team in league:
         print(team.name + ' ' + str(team.entry_count))
