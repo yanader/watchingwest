@@ -21,7 +21,7 @@ class Image(models.Model):
 
     def image_tag(self): # new
         return mark_safe(
-            f'<img src="{self.photo.url}" style="max-width: 50%; height: auto;" />'
+            f'<img src="{self.photo.url}" style="max-width: 40%; height: auto;" />'
         )
     
 class Competition(models.Model):

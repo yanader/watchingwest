@@ -34,8 +34,17 @@
     font-weight: bold;
 }
 
-/* .entry-link, .entry-link:hover {
-    
-    
-} */
+.entry-header, .entry-sub-header {
+    text-align: center;
+}
 
+.text-div {
+    padding:5px;
+    margin:5px;
+    border: solid #CFCFCF;
+    box-shadow: 2px 3px #AAAAAA;
+}
+
+.image-div {
+    text-align: center;
+}

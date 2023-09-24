@@ -5,11 +5,13 @@
 {% block body %}
 
 
-<h3>{{entry.opponent.name}} - {{entry.date}}</h3>
+<h3 class="entry-header">{{entry.opponent.name}}</h3>
+<h6 class="entry-sub-header">{{entry.date}}</h6>
+<div class="image-div">{{entry.image.image_tag}}</div>
 
-{{entry.image.image_tag}}
 
 <br>
-<p>{{entry.text_entry}}</p>
-
+<div class="text-div">
+    <p>{{entry.text_entry}}</p>
+</div>
 {% endblock %}
