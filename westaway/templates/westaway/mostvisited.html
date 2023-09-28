@@ -2,13 +2,48 @@
 
 {% block body %}
 
-<p>This is the league table of my most seen teams at west away games.</p>
-<p>It includes games at neutral grounds.</p>
+<p>
+    Here are all the teams I've seen play against West. 
+    The data set contains away games from all time and home games as of 26/09/2023
+</p>
 
-<ol>
-    {% for team in league %}
-    <li>{{team.name}} -> {{team.entry_count}} visit{% if team.entry_count != 1 %}s{% endif %}</li>
-    {% endfor %}
-</ol>
+<label for="filterOption">Filter by:</label>
+<select id="filterOption">
+    <option value="both">Both</option>
+    <option value="home">Home</option>
+    <option value="away">Away</option>
+</select>
+
+<ul id="leagueList">
+    <!-- Entries will be placed here. -->
+</ul>
+
+<script>
+    document.getElementById('filterOption').addEventListener('change', function () {
+        var filterOption = this.value;
+        updateLeagueTable(filterOption);
+    });
+
+    function updateLeagueTable(filterOption) {
+        // Make an AJAX call to the server
+        fetch('{% url "westaway:mostvisited_ajax" %}?filter_option=' + filterOption)
+            .then(response => response.json())
+            .then(data => {
+                // Update the league table
+                var leagueList = document.getElementById('leagueList');
+                leagueList.innerHTML = '';  // Clear the current content
+
+                data.data.forEach(function (team) {
+                    var li = document.createElement('li');
+                    li.textContent = team.name + ' (' + team.entry_count + ' time' + (team.entry_count !== 1 ? 's)' : ')');
+                    leagueList.appendChild(li);
+                });
+            })
+            .catch(error => console.error('Error:', error));
+    }
+
+    // Initial load
+    updateLeagueTable('both');
+</script>
 
 {% endblock %}
