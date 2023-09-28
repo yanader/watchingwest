@@ -1,0 +1,2 @@
+1 - Refactoring of sensible functions
+2 - Build tests including with selinium
