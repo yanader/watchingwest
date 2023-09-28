@@ -1,3 +1,4 @@
+import random
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.db.models import Count
@@ -58,3 +59,12 @@ def mostvisited_ajax(request):
     data = [{'name': entry['opponent__name'], 'entry_count': entry['entry_count']} for entry in entries]
 
     return JsonResponse({'data': data})
+
+def randomentry(request):
+    ids = Entry.objects.values_list('id', flat=True)
+    random_id = random.choice(ids)
+    
+    entry = Entry.objects.get(id=random_id)
+    return render(request, "westaway/entry.html", {
+        "entry": entry
+    })
