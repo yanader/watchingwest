@@ -1,10 +1,14 @@
-from django.contrib.auth.models import AbstractUser
+from django.contrib.auth.models import User as DjangoUser
 from django.db import models
 from django.utils.safestring import mark_safe
 
 # Create your models here.
 class User(models.Model):
+    django_user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE, null=True, blank=True)
     pass
+
+    def __str__(self):
+        return f"{self.django_user}"
 
 
 class Opponent(models.Model):
