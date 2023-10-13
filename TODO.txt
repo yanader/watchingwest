@@ -2,3 +2,6 @@
 2 - Build tests including with selinium
 3 - Adjust "users" model and the ability to edit Entry
 this is an additional test
+
+4 - colouring of entries for home/away
+5 - warning when post failed

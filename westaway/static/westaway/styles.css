@@ -1,44 +1,62 @@
- .entry {
+.entry-home, .entry-away {
     border-radius: 10px;
-    background-color: #ebf3ff;
-    box-shadow: #61738d 0px 2px 10px;
     margin: 20px;
     padding: 10px;
     text-align: center;
-    color: black;
     text-decoration: none;
+}
+ 
+.entry-home {    
+    background-color: #ffffff;
+    box-shadow: #61738d 0px 2px 10px;
+    color: black;
+}
+
+.entry-away {    
+    background-color: #FACFEB;
+    box-shadow: #61738d 0px 2px 10px;
+    color: black;
+}
+
+.entry-home:hover, .entry-away:hover{
+    text-decoration: none; 
+}
+
+.entry-home:hover {
+    background-color: #000000;
+    color: white;
+}
+
+.entry-away:hover {
+    background-color: #2F5086;
+    color: white;
+}
+
+.entry-home:active {
+    box-shadow: #ffffff 0px 2px 10px;
+}
+
+.entry-away:active {
+    box-shadow: #d33bad 0px 2px 10px;
+}
+
+.entry-home ul, .entry-away ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.entry-home ul li:first-child, .entry-away ul li:first-child {
+    font-weight: bold;
 }
 
 .entry-link:hover {
     text-decoration: none;
 }
 
-.entry:hover {
-    background-color: #cceeea;
-    color: black;
-    text-decoration: none;
-    
-}
-
-.entry:active {
-    box-shadow: #d33bad 0px 2px 10px;
-}
-
-.entry ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
-
-.entry ul li:first-child {
-    font-weight: bold;
-}
-
 .entry-header, .entry-sub-header {
     text-align: center;
 }
-
-/* This is just a comment for testing. */
 
 .text-div {
     padding:5px;
@@ -48,5 +66,9 @@
 }
 
 .image-div {
+    text-align: center;
+}
+
+.errorheader, .errormessage{
     text-align: center;
 }

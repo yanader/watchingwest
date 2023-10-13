@@ -5,7 +5,7 @@
 
 {% for entry in entries %}
 <a class="entry-link" href="{% url 'westaway:entry' entry.id %}">
-<div class="entry">
+<div class="{% if entry.home %}entry-home{% else %}entry-away{% endif %}">
     <p><ul>
         <li>{{entry.opponent}}</li>
         <li>{{entry.competition.competition}}</li>

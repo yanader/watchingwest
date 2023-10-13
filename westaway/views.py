@@ -21,7 +21,7 @@ def create(request):
         form = EntryUploadForm(request.POST, request.FILES)
         if form.is_valid():
             if request.POST.get('password') != PasswordEntry.objects.first().password:
-                return redirect('westaway:index')
+                return redirect('westaway:error')
             form.save()
             return redirect('westaway:index')
     else:
@@ -68,3 +68,6 @@ def randomentry(request):
     return render(request, "westaway/entry.html", {
         "entry": entry
     })
+
+def error(request):
+    return render(request, "westaway/error.html")
