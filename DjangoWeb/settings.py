@@ -120,9 +120,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = '/home/yanader/westaway/static'
+STATIC_ROOT = '/home/yanader/westaway/static'
 
-STATIC_ROOT = ['/home/yanader/westaway/static','/home/yanader/contents/static']
+#STATIC_ROOT = ['/home/yanader/westaway/static','/home/yanader/contents/static']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

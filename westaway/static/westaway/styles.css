@@ -72,3 +72,16 @@
 .errorheader, .errormessage{
     text-align: center;
 }
+
+h1{
+    text-align: center;
+}
+
+.contents-entry{
+    margin: 15px;
+    padding: 15px;
+}
+
+body{
+    font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji", sans-serif;
+}
