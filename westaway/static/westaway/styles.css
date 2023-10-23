@@ -87,7 +87,8 @@ body{
 }
 
 @media only screen and (max-width: 480px) {
-    img {
+    .image-div {
     width: 100%;
+    text-align: center;
     }
     }
