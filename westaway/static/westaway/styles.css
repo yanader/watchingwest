@@ -85,10 +85,3 @@ h1{
 body{
     font-family: "Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji", sans-serif;
 }
-
-@media only screen and (max-width: 480px) {
-    .image-div {
-    width: 100%;
-    text-align: center;
-    }
-    }
