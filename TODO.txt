@@ -1,7 +1,9 @@
-1 - Refactoring of sensible functions
-2 - Build tests including with selinium
-3 - Adjust "users" model and the ability to edit Entry
-this is an additional test
+Short term:
+- Include key to explain home/away colouring on front page - currently vague.
+- Edit styling to better render images on mobile.
+- Edit form styling. Read more on Django forms and widgets.
 
-4 - colouring of entries for home/away
-5 - warning when post failed
+Long term:
+- Set up ability for additional users.
+- Build embeded list of stadia with a form to add additional (So that I can do is outside of /admin)
+- Build form to add additional teams from outside NWCFL (Again so it can be done outside of /admin but won't come up very often)
