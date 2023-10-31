@@ -23,9 +23,9 @@ class Image(models.Model):
     title=models.CharField(max_length=64)
     photo=models.ImageField(upload_to="pics")
 
-    def image_tag(self): # new
+    def image_tag(self): 
         return mark_safe(
-            f'<img src="{self.photo.url}" style="max-width: 40%; height: auto;" />'
+            f'<img src="{self.photo.url}" />'
         )
     
 class Competition(models.Model):
