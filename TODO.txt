@@ -2,6 +2,7 @@ Short term:
 - Include key to explain home/away colouring on front page - currently vague.
 - Edit styling to better render images on mobile.
 - Edit form styling. Read more on Django forms and widgets.
+- Add README
 
 Long term:
 - Set up ability for additional users.
