@@ -6,7 +6,7 @@ An online record, built with Django and SQLite, of every time I go to watch West
 
 ~~This was my first built and deployed project and, although I learned a lot during construction, there is a lot wrong with it and in the medium term I plan to rebuild it as a Spring backend. I _may_ learn react for the frontend.~~
 
-The coming non-league season (2024/25) combined with my rapidly depleting storage on PythonAnywhere has renewed my interest in this project. The rebuild of this app has been moved from the long-term to the medium trip. If you have any interest in non-league football and Spring backends and would like to get involved then [get in touch](yanaderrr@gmail.com)!
+**The coming non-league season (2024/25) combined with my rapidly depleting storage on PythonAnywhere has renewed my interest in this project. The rebuild of this app has been moved from the long-term to the medium trip. If you have any interest in non-league football and Spring backends and would like to get involved then get in touch by opening an issue**
 
 #### Home
 
