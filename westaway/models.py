@@ -1,11 +1,11 @@
 from django.contrib.auth.models import User as DjangoUser
 from django.db import models
 from django.utils.safestring import mark_safe
+from westaway.storages_backends import MediaStorage
 
-# Create your models here.
+
 class User(models.Model):
     django_user = models.OneToOneField(DjangoUser, on_delete=models.CASCADE, null=True, blank=True)
-    pass
 
     def __str__(self):
         return f"{self.django_user}"
@@ -20,14 +20,13 @@ class Opponent(models.Model):
 
 
 class Image(models.Model):
-    title=models.CharField(max_length=64)
-    photo=models.ImageField(upload_to="pics")
+    title = models.CharField(max_length=64)
+    photo = models.ImageField(upload_to="pics", storage=MediaStorage())
 
-    def image_tag(self): 
-        return mark_safe(
-            f'<img src="{self.photo.url}" />'
-        )
-    
+    def image_tag(self):
+        return mark_safe(f'<img src="{self.photo.url}" />')
+
+
 class Competition(models.Model):
     competition = models.CharField(max_length=64, default="", blank=True)
 
@@ -47,6 +46,7 @@ class Entry(models.Model):
 
     def __str__(self):
         return f"{self.date} - {self.opponent}"
+
 
 class PasswordEntry(models.Model):
     password = models.CharField(max_length=64)
