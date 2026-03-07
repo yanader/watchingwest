@@ -34,6 +34,7 @@ ALLOWED_HOSTS = ['yanader.pythonanywhere.com','127.0.0.1']
 INSTALLED_APPS = [
     'contents',
     'westaway',
+    'storage',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

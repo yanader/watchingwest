@@ -15,6 +15,7 @@ class EntryUploadForm(forms.ModelForm):
     date = forms.DateField(widget=forms.DateInput(attrs={'type': 'date'}))
     text_entry = forms.CharField(widget=forms.Textarea)
 
+    # TODO: Making the below not required will fix the tick box issue?
     home = forms.BooleanField(initial=True)
 
     def __init__(self, *args, **kwargs):
