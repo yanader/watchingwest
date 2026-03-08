@@ -6,14 +6,10 @@ from django.db.models.functions import Coalesce
 from .models import Opponent, Entry, PasswordEntry
 from .forms import EntryUploadForm
 
-# Create your views here.
 
 def index(request):
     entries = Entry.objects.all().order_by('-date')
-    context = {
-        'entries' : entries
-    }
-    return render(request,"westaway/index.html", context)
+    return render(request, "westaway/index.html", {'entries': entries})
 
 
 def create(request):
@@ -26,48 +22,47 @@ def create(request):
             return redirect('westaway:index')
     else:
         form = EntryUploadForm()
-    return render(request, "westaway/create.html", {'form':form})
+    return render(request, "westaway/create.html", {'form': form})
 
 
 def entry(request, id):
     entry = Entry.objects.get(id=id)
-    return render(request, "westaway/entry.html", {
-        "entry": entry
-    })
+    return render(request, "westaway/entry.html", {'entry': entry})
 
 
 def mostvisited(request):
-    league = Opponent.objects.annotate(entry_count=Count('entry')).filter(entry_count__gt=0).order_by('-entry_count')
-    for team in league:
-        print(team.name + ' ' + str(team.entry_count))
-    return render(request, "westaway/mostvisited.html", {
-        "league":league
-    })
+    league = (Opponent.objects
+              .annotate(entry_count=Count('entry'))
+              .filter(entry_count__gt=0)
+              .order_by('-entry_count'))
+    return render(request, "westaway/mostvisited.html", {'league': league})
+
 
 def mostvisited_ajax(request):
-    filter_option = request.GET.get('filter_option', 'both')  # Default to 'both' if not provided
+    filter_option = request.GET.get('filter_option', 'both')
+
+    base_qs = Entry.objects.values('opponent__name').annotate(
+        entry_count=Coalesce(Count('opponent'), 0)
+    ).order_by('-entry_count')
 
     if filter_option == 'both':
-        entries = Entry.objects.values('opponent__name').annotate(entry_count=Coalesce(Count('opponent'), 0)).order_by('-entry_count')
+        entries = base_qs
     elif filter_option == 'home':
-        entries = Entry.objects.filter(home=True).values('opponent__name').annotate(entry_count=Coalesce(Count('opponent'), 0)).order_by('-entry_count')
+        entries = base_qs.filter(home=True)
     elif filter_option == 'away':
-        entries = Entry.objects.filter(home=False).values('opponent__name').annotate(entry_count=Coalesce(Count('opponent'), 0)).order_by('-entry_count')
+        entries = base_qs.filter(home=False)
     else:
         return JsonResponse({'error': 'Invalid filter option'})
 
-    data = [{'name': entry['opponent__name'], 'entry_count': entry['entry_count']} for entry in entries]
-
+    data = [{'name': e['opponent__name'], 'entry_count': e['entry_count']} for e in entries]
     return JsonResponse({'data': data})
+
 
 def randomentry(request):
     ids = Entry.objects.values_list('id', flat=True)
-    random_id = random.choice(ids)
-    
-    entry = Entry.objects.get(id=random_id)
-    return render(request, "westaway/entry.html", {
-        "entry": entry
-    })
+    entry = Entry.objects.get(id=random.choice(ids))
+    return render(request, "westaway/entry.html", {'entry': entry})
+
 
 def error(request):
     return render(request, "westaway/error.html")
